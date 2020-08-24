@@ -2,6 +2,7 @@ package core.entity;
 
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Streamer {
@@ -13,12 +14,19 @@ public class Streamer {
     private final List<Game> favoriteGames;
     /** Харизма */
     private final Float charisma;
+    /** Массив зрителей */
+    private final List<Watcher> watchers;
+
+    /** Массив подписчиков */
+    private final List<Watcher> followers;
 
     public Streamer(String name, List<Pair<Integer, Integer>> uptime, List<Game> favoriteGames, Float charisma) {
         this.name = name;
         this.uptime = uptime;
         this.favoriteGames = favoriteGames;
         this.charisma = charisma;
+        this.watchers = new ArrayList<>();
+        this.followers = new ArrayList<>();
     }
 
     public String getName() {
@@ -35,5 +43,16 @@ public class Streamer {
 
     public Float getCharisma() {
         return charisma;
+    }
+
+    public boolean addNewWatcher(Watcher watcher){
+        Float chanceToWatch = watcher.getChanceToWatch(this);
+
+        if(chanceToWatch > 0.7){
+            this.watchers.add(watcher);
+            return true;
+        }
+
+        return false;
     }
 }

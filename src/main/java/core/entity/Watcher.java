@@ -36,6 +36,7 @@ public class Watcher {
      * @return
      */
     public Float getChanceToWatch(Streamer streamer){
+        //TODO rework this method
         Float baseChance = 0.6f;
         for (Pair<Integer, Integer> uptimeSession:this.uptime){
             if(streamer.getUptime().contains(uptimeSession)){
@@ -47,6 +48,9 @@ public class Watcher {
             if(streamer.getFavoriteGames().contains(game)){
                 baseChance += 0.04f;
             }
+        }
+        if(streamer.getCharisma() > 0.6f){
+            baseChance *= 1.5f * streamer.getCharisma();
         }
 
         return baseChance;
