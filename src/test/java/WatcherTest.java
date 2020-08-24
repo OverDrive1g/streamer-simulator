@@ -31,7 +31,7 @@ public class WatcherTest {
         Streamer streamer = new Streamer("name", streamerUptime,streamerFavoriteGames,0.9f);
 
         Float chanceToWatch = watcher.getChanceToWatch(streamer);
-        assertEquals(chanceToWatch, new Float(0.7800001f));
+        assertEquals(chanceToWatch, new Float(1.0530001f));
     }
 
     @Test
@@ -53,6 +53,6 @@ public class WatcherTest {
         Streamer streamer = new Streamer("name", streamerUptime,streamerFavoriteGames,0.9f);
 
         Float chanceToFollow = watcher.getChanceToFollow(streamer);
-        assertEquals(chanceToFollow, new Float(0.7020001f));
+        assertEquals(chanceToFollow, new Float(0.9477001f));
     }
 }
